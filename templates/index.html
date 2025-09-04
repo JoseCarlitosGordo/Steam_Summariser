@@ -3,16 +3,18 @@
 </head>
 
 <body>
-    <script src = "/Frontend/interaction.js"></script>
+    <script src = "interaction.js"></script>
 
-        <form action = "/find_game" method = "POST" onsubmit = "return search_game()">
-            <input type = "text" name = "game_name">
-            <button type = "submit"> Search</button>
+        <form action = "/Backend/main.py/find_game" method = "POST">
+            <input type = "text" id = "game_name">
+            <button type = "button" id = searchBar> Search</button>
         </form>   
     
     <ul name = "games">
         {% for game in result %}
-            <li>{{ game }}</li>
+            <li> Link: {{ game["link"] }}</li>
+            <li>Name: {{ game["name"] }}</li>
+            <li>Price: {{ game["price"] }}</li>
         {% endfor %}
         
     </ul>
