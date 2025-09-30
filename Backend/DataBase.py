@@ -13,26 +13,21 @@ class DatabaseIndex:
         added_element = "INSERT INTO Images (Image_Path, Image_Name) VALUES (?, ?) "
        
     
-    
-    
-
-    
-    
-   
-
-
     #TODO: Modify this code base so that it can store games instead of images. Keep in mind that the appid is the only thing that should be not null
 
     """Sets up database if it has not already been set up."""
     def database_setup(self):
         self.__cursor_obj.execute("""CREATE TABLE IF NOT EXISTS Games(
             AppID INT PRIMARY KEY NOT NULL,
-            Game_Name VARCHAR(255) NOT NULL,
-            image_link VARCHAR(255) NOT NULL, 
-            Description VARCHAR(300) NOT NULL, 
+            Type TEXT NOT NULL,              
+            Game_Name TEXT NOT NULL,
+            image_link TEXT NOT NULL, 
+            Description TEXT NOT NULL
             
             
          ); """)
+        
+        #TODO: create new tables for Game's categories and individual categories (Many to many relationship between games and category)
         
         self.__database_to_edit.commit()
     
