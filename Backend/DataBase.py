@@ -27,7 +27,10 @@ class DatabaseIndex:
     def database_setup(self):
         self.__cursor_obj.execute("""CREATE TABLE IF NOT EXISTS Games(
             AppID INT PRIMARY KEY NOT NULL,
-            Game_Name VARCHAR(255) NOT NULL
+            Game_Name VARCHAR(255) NOT NULL,
+            image_link VARCHAR(255) NOT NULL, 
+            Description VARCHAR(300) NOT NULL, 
+            
             
          ); """)
         

@@ -17,6 +17,7 @@ gameslist = games[last_index:end_index]
 for game in gameslist: 
     game_to_search = requests.get(f"https://store.steampowered.com/api/appdetails?appids={game["appid"]}")
 
+#TODO: Update this to store end_index. Also correctly format game_to_search so that it adds the result to db
 with open("current_index.json", "r") as outputJson:
     state = json.load(outputJson)
     last_index = state.get("last_index")
