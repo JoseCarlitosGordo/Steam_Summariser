@@ -1,10 +1,22 @@
 import logo from './logo.svg';
 import './App.css';
+import { useEffect, useState } from 'react';
 
 function App() {
+  const [data, setData] = useState([]);
+  useEffect(() => {
+    fetch("/data").then((res) =>
+            res.json().then((data) => {
+                // Setting a data from api
+                setdata(data);
+            })
+        );
+    }, []);
+
   return (
+    
     <div className="App">
-      <header className="App-header">
+      {/* <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
           Edit <code>src/App.js</code> and save to reload.
@@ -17,7 +29,22 @@ function App() {
         >
           Learn React
         </a>
-      </header>
+      </header> */}
+
+      {
+        data.map(record => {
+          <div key = {record.AppID}>
+            <p>{record.Type}</p>
+            <p>{record.Game_Name}</p>
+            <p>{record.image_link}</p>
+            <p>{record.Description}</p>
+
+          </div>
+
+        })
+      }
+     
+
     </div>
   );
 }
