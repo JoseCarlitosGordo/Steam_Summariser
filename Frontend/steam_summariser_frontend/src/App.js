@@ -5,10 +5,11 @@ import { useEffect, useState } from 'react';
 function App() {
   const [data, setData] = useState([]);
   useEffect(() => {
-    fetch("/data").then((res) =>
-            res.json().then((data) => {
+    fetch("/api")
+    .then((res) =>res.json()
+    .then((data) => {
                 // Setting a data from api
-                setdata(data);
+                setData(data);
             })
         );
     }, []);
