@@ -9,8 +9,9 @@ class DatabaseIndex:
         self.database_setup()
 
 
-    def add_new_image(self, ):
-        added_element = "INSERT INTO Images (Image_Path, Image_Name) VALUES (?, ?) "
+    def add_new_game(self, id, type, game_name, image_link, detailed_descrip):
+        self.__cursor_obj.execute("INSERT INTO Games VALUES (?, ?, ?, ?, ?)", (id, type, game_name, image_link, detailed_descrip))
+        self.__database_to_edit.commit()
        
     
     #TODO: Modify this code base so that it can store games instead of images. Keep in mind that the appid is the only thing that should be not null
@@ -23,7 +24,6 @@ class DatabaseIndex:
             Game_Name TEXT NOT NULL,
             image_link TEXT NOT NULL, 
             Description TEXT NOT NULL
-            
             
          ); """)
         
